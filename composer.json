@@ -1,0 +1,17 @@
+{
+    "require": {
+        "workerman/workerman": "^4.1",
+        "xaboy/form-builder": "^2.0",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "./",
+            "app\\": "./app",
+            "App\\": "./app"
+        },
+        "files": [
+            "./functions.php"
+        ]
+    }
+}
