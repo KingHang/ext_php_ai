@@ -38,5 +38,9 @@ return [
                 'enable_memory_monitor' => DIRECTORY_SEPARATOR === '/',
             ]
         ]
-    ]
+    ],
+    'wechatListen' => [
+        // 这里指定进程类
+        'handler' => app\WechatListen::class,
+    ],
 ];
