@@ -15,6 +15,10 @@ class ComposerStaticInitb6a438396f76d39b4e03bc426b69986f
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'samejack\\' => 9,
+        ),
         'a' => 
         array (
             'app\\' => 4,
@@ -57,6 +61,10 @@ class ComposerStaticInitb6a438396f76d39b4e03bc426b69986f
     );
 
     public static $prefixDirsPsr4 = array (
+        'samejack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/samejack/php-argv/src',
+        ),
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -75,8 +83,8 @@ class ComposerStaticInitb6a438396f76d39b4e03bc426b69986f
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (

@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'eca653cd30a2d02b70d6de48f633af0cbd0a63c1',
+        'reference' => '54b0a7a3e408291a0a8a99a431310e77cb97b3cf',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'eca653cd30a2d02b70d6de48f633af0cbd0a63c1',
+            'reference' => '54b0a7a3e408291a0a8a99a431310e77cb97b3cf',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -134,6 +134,15 @@
             'install_path' => __DIR__ . '/../ralouphie/getallheaders',
             'aliases' => array(),
             'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+            'dev_requirement' => false,
+        ),
+        'samejack/php-argv' => array(
+            'pretty_version' => '1.0.3',
+            'version' => '1.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../samejack/php-argv',
+            'aliases' => array(),
+            'reference' => '0551f0f7fd38a5e9dcb316d5cc9028cdd62b21ac',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(

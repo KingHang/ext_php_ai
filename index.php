@@ -16,11 +16,12 @@ $http_worker = new Worker("http://0.0.0.0:40444");
 // 启动1个进程对外提供服务
 $http_worker->count = 1;
 
-$http_worker->onWorkerStart = function($worker) {
+$http_worker->onWorkerStart = function(Worker $worker) {
     try {
         $worker->msg = new Message();
     } catch (\Exception $e) {
-        echo $e->getMessage();
+        echo $e->getMessage() . PHP_EOL;
+        Worker::stopAll();
     }
 };
 

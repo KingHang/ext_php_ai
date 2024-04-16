@@ -1,19 +1,22 @@
 <?php
+
+use samejack\PHP\ArgvParser;
+
 function getConfig($key = null)
 {
-    $i = 0;
     $config = [];
-    do {
-        $i++;
+
+    $argvParser = new ArgvParser();
+    $config = $argvParser->parseConfigs();
+    if (count($config) <= 1) {
         $iniFile = ROOT_PATH . "/key.ini";
         if (!file_exists($iniFile)) {
-            sleep(2);
-            continue;
+            return "";
+        } else {
+            $configStr = file_get_contents($iniFile);
+            $config = json_decode($configStr, true);
         }
-
-        $configStr = file_get_contents($iniFile);
-        $config = json_decode($configStr, true);
-    } while ($i < 10);
+    }
 
     if (is_null($key)) {
         return $config;

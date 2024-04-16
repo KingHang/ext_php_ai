@@ -22,6 +22,7 @@ class Message
     public function __construct()
     {
         $this->refreshConfig();
+        $this->initWs();
     }
 
     public function refreshConfig()
@@ -40,8 +41,6 @@ class Message
                 echo $e->getMessage() . PHP_EOL;
             }
         }
-
-        $this->initWs();
     }
 
     public function onMessage($data, AsyncTcpConnection $conn)
@@ -168,8 +167,8 @@ class Message
 
             $this->link->connect();
         } else {
-            echo "appKey不存在，请重试";
-            // throw new \Exception("appKey不存在，请重试");
+            // echo "appKey不存在，请重试";
+            throw new \Exception("appKey不存在，请重试");
         }
     }
 
