@@ -1,0 +1,75 @@
+2024-04-15 14:17:53 pid:1 Error: Call to undefined function getAppConf() in E:\workspace\ext_php_ai\index.php:21
+Stack trace:
+#0 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), Object(Workerman\Protocols\Http\Request))
+#1 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #22)
+#2 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#3 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#4 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#5 E:\workspace\ext_php_ai\index.php(48): Workerman\Worker::runAll()
+#6 {main}
+2024-04-15 19:26:48 pid:1 Error: Class "\app\ai\driver\Qianwen" not found in E:\workspace\ext_php_ai\app\ai\openAi.php:24
+Stack trace:
+#0 E:\workspace\ext_php_ai\app\ai\openAi.php(40): app\ai\openAi->__construct(Array, 'Qianwen')
+#1 E:\workspace\ext_php_ai\app\Message.php(34): app\ai\openAi::getInstance(Array, 'Qianwen')
+#2 E:\workspace\ext_php_ai\app\Message.php(21): app\Message->refreshConfig()
+#3 E:\workspace\ext_php_ai\index.php(21): app\Message->__construct()
+#4 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(2497): {closure}(Object(Workerman\Worker))
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1487): Workerman\Worker->run()
+#6 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#7 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#8 E:\workspace\ext_php_ai\index.php(56): Workerman\Worker::runAll()
+#9 {main}
+2024-04-15 19:37:50 pid:1 Error: Typed property app\ai\Driver::$apiKey must not be accessed before initialization in E:\workspace\ext_php_ai\app\ai\driver\Qwen.php:40
+Stack trace:
+#0 E:\workspace\ext_php_ai\app\Message.php(94): app\ai\driver\Qwen->message('\xE4\xBD\xA0\xE5\xA5\xBD')
+#1 E:\workspace\ext_php_ai\app\Message.php(58): app\Message->createAnswer('\xE4\xBD\xA0\xE5\xA5\xBD', 'Kingxiaohang')
+#2 E:\workspace\ext_php_ai\app\Message.php(130): app\Message->onMessage('{"method":"newm...', Object(Workerman\Connection\AsyncTcpConnection))
+#3 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): app\Message->app\{closure}(Object(Workerman\Connection\AsyncTcpConnection), '{"method":"newm...')
+#4 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #49)
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#6 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#7 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#8 E:\workspace\ext_php_ai\index.php(57): Workerman\Worker::runAll()
+#9 {main}
+2024-04-15 19:51:18 pid:1 Error: Call to a member function getBody() on null in E:\workspace\ext_php_ai\app\ai\Driver.php:57
+Stack trace:
+#0 E:\workspace\ext_php_ai\app\ai\Driver.php(41): app\ai\Driver->httpRequest('https://dashsco...', Array)
+#1 E:\workspace\ext_php_ai\app\ai\driver\Qwen.php(46): app\ai\Driver->httpPost('https://dashsco...', Array, Array)
+#2 E:\workspace\ext_php_ai\app\Message.php(94): app\ai\driver\Qwen->message('\xE4\xBD\xA0\xE5\xA5\xBD')
+#3 E:\workspace\ext_php_ai\app\Message.php(58): app\Message->createAnswer('\xE4\xBD\xA0\xE5\xA5\xBD', 'Kingxiaohang')
+#4 E:\workspace\ext_php_ai\app\Message.php(133): app\Message->onMessage('{"method":"newm...', Object(Workerman\Connection\AsyncTcpConnection))
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): app\Message->app\{closure}(Object(Workerman\Connection\AsyncTcpConnection), '{"method":"newm...')
+#6 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #49)
+#7 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#8 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#9 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#10 E:\workspace\ext_php_ai\index.php(57): Workerman\Worker::runAll()
+#11 {main}
+2024-04-15 20:02:42 pid:1 Error: Call to a member function getBody() on null in E:\workspace\ext_php_ai\app\ai\Driver.php:57
+Stack trace:
+#0 E:\workspace\ext_php_ai\app\ai\Driver.php(41): app\ai\Driver->httpRequest('https://dashsco...', Array)
+#1 E:\workspace\ext_php_ai\app\ai\driver\Qwen.php(46): app\ai\Driver->httpPost('https://dashsco...', '{"model":"qwen-...', Array)
+#2 E:\workspace\ext_php_ai\app\Message.php(94): app\ai\driver\Qwen->message('\xE4\xBD\xA0\xE5\xA5\xBD')
+#3 E:\workspace\ext_php_ai\app\Message.php(58): app\Message->createAnswer('\xE4\xBD\xA0\xE5\xA5\xBD', 'Kingxiaohang')
+#4 E:\workspace\ext_php_ai\app\Message.php(133): app\Message->onMessage('{"method":"newm...', Object(Workerman\Connection\AsyncTcpConnection))
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): app\Message->app\{closure}(Object(Workerman\Connection\AsyncTcpConnection), '{"method":"newm...')
+#6 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #49)
+#7 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#8 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#9 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#10 E:\workspace\ext_php_ai\index.php(57): Workerman\Worker::runAll()
+#11 {main}
+2024-04-15 22:43:20 pid:1 Exception: 被服务端取消了,可能是密钥或者应用状态不对,已有其他连接,请去个人中心查看应用 in E:\workspace\ext_php_ai\app\Message.php:139
+Stack trace:
+#0 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(928): app\Message->app\{closure}(Object(Workerman\Connection\AsyncTcpConnection))
+#1 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(835): Workerman\Connection\TcpConnection->destroy()
+#2 E:\workspace\ext_php_ai\app\Message.php(123): Workerman\Connection\TcpConnection->close()
+#3 E:\workspace\ext_php_ai\app\Message.php(37): app\Message->initWs()
+#4 E:\workspace\ext_php_ai\index.php(33): app\Message->refreshConfig()
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), Object(Workerman\Protocols\Http\Request))
+#6 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #93)
+#7 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#8 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#9 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#10 E:\workspace\ext_php_ai\index.php(57): Workerman\Worker::runAll()
+#11 {main}
