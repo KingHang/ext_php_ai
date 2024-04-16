@@ -8,7 +8,10 @@ use Workerman\Connection\AsyncTcpConnection;
 class Message
 {
     public static array $model = [
-        1 => ["value" => "1", "label" => "通义千问 qwen-turbo", 'model' => "qwen-turbo", "driver" => "Qwen"]
+        1 => ["value" => "1", "label" => "通义千问 qwen-turbo", 'model' => "qwen-turbo", "driver" => "Qwen"],
+        2 => ["value" => "2", "label" => "通义千问 qwen-plus", 'model' => "qwen-plus", "driver" => "Qwen"],
+        3 => ["value" => "3", "label" => "通义千问 qwen-max", 'model' => "qwen-max", "driver" => "Qwen"],
+        4 => ["value" => "4", "label" => "通义千问 qwen-max-longcontext", 'model' => "qwen-max-longcontext", "driver" => "Qwen"],
     ];
 
     protected mixed $ai;
@@ -43,7 +46,7 @@ class Message
 
     public function onMessage($data, AsyncTcpConnection $conn)
     {
-        echo $data . PHP_EOL;
+        // echo $data . PHP_EOL;
         $msg = json_decode($data, true);
         $method = $msg['method'];
 
@@ -62,11 +65,31 @@ class Message
             $resData = $this->createAnswer($msg['data']['msg'] ?? "", $fromId);
             if ($resData == "") return false;
 
+            $this->delayedReply($conf);
+
             sleep(rand(1, 3));
 
             $resMsg = $this->buildMsg($resData, $fromId, $pid);
             $this->sendMsg($resMsg, $conn);
         }
+    }
+
+    protected function delayedReply($config)
+    {
+        if (!isset($config['delayedReply']) || $config['delayedReply'] == 0) {
+            return true;
+        }
+
+        $delay = explode("-", $config['delayedReply']);
+        if (count($delay) >= 2) {
+            $rand = rand($delay[0], $delay[1]);
+        } else {
+            $rand = $delay[0];
+        }
+
+        sleep($rand);
+
+        return true;
     }
 
     protected function buildMsg($content, $toId, $pid)
@@ -97,7 +120,7 @@ class Message
 
         $res = $this->ai->getAi()->message($param);
 
-        echo json_encode($res) . PHP_EOL;
+        // echo json_encode($res) . PHP_EOL;
         $answer = $tips = "";
         if ($res['code'] == 0) {
             $tokens = $config['tokens'] ?? 0;

@@ -40,14 +40,15 @@ $http_worker->onMessage = function (TcpConnection $connection, Request $request)
         $key = Elm::input("key", "apiKey")->value($config['key'] ?? "");
         $proxy = Elm::input("proxy", "代理地址")->value($config['proxy'] ?? "");
         $tokens = Elm::input("tokens", "TOKENS")->value($config["tokens"] ?? 0)->min(0)->info("可用TOKEN数量，0不限制");
-        $user = Elm::input("user", "用户列表")->info("填写可以使用机器人的微信ID，多个英文逗号分隔")->value($config['user'] ?? "");
+        $user = Elm::input("user", "用户列表")->info("填写可以使用机器人的微信ID，多个用英文逗号分隔")->value($config['user'] ?? "");
+        $delayedReply = Elm::input("delayedReply", "延迟回复")->info("填写数字固定时间延迟或1-3随机延迟，0不延迟，单位：秒")->value($config['delayedReply'] ?? "0");
 
         //创建表单
         $form = Elm::createForm($action)->setMethod($method);
         $form->setTitle("AI助手设置");
 
         //添加组件
-        $form->setRule([$model, $key, $proxy, $tokens, $user]);
+        $form->setRule([$model, $key, $proxy, $tokens, $user, $delayedReply]);
 
         //生成表单页面
         return $connection->send($form->view());

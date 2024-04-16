@@ -11,6 +11,9 @@ class Qwen extends Driver
     protected string $model = "qwen-turbo";
     protected array $modelList = [
         "qwen-turbo" => "/api/v1/services/aigc/text-generation/generation",
+        "qwen-plus" => "/api/v1/services/aigc/text-generation/generation",
+        "qwen-max" => "/api/v1/services/aigc/text-generation/generation",
+        "qwen-max-longcontext" => "/api/v1/services/aigc/text-generation/generation",
     ];
 
     public function message(string $data, array $history = [], bool $sse = false): array
