@@ -73,3 +73,23 @@ Stack trace:
 #9 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
 #10 E:\workspace\ext_php_ai\index.php(57): Workerman\Worker::runAll()
 #11 {main}
+2024-04-18 19:08:04 pid:1 TypeError: array_merge(): Argument #1 must be of type array, null given in E:\workspace\ext_php_ai\index.php:32
+Stack trace:
+#0 E:\workspace\ext_php_ai\index.php(32): array_merge(NULL, Array)
+#1 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), Object(Workerman\Protocols\Http\Request))
+#2 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #36)
+#3 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#4 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#6 E:\workspace\ext_php_ai\index.php(77): Workerman\Worker::runAll()
+#7 {main}
+2024-04-18 19:08:30 pid:1 TypeError: array_merge(): Argument #1 must be of type array, null given in E:\workspace\ext_php_ai\index.php:32
+Stack trace:
+#0 E:\workspace\ext_php_ai\index.php(32): array_merge(NULL, Array)
+#1 E:\workspace\ext_php_ai\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), Object(Workerman\Protocols\Http\Request))
+#2 E:\workspace\ext_php_ai\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #36)
+#3 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#4 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#5 E:\workspace\ext_php_ai\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#6 E:\workspace\ext_php_ai\index.php(77): Workerman\Worker::runAll()
+#7 {main}

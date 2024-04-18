@@ -31,7 +31,7 @@ function getAppConf()
     if (!file_exists($iniFile)) return [];
 
     $confStr = file_get_contents($iniFile);
-    return json_decode($confStr, true);
+    return json_decode($confStr, true) ?: [];
 }
 
 function setAppConf($conf)

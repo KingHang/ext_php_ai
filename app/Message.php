@@ -7,10 +7,10 @@ use Workerman\Connection\AsyncTcpConnection;
 
 class Message
 {
-    const MODEL_1 = 1;
-    const MODEL_2 = 2;
-    const MODEL_3 = 3;
-    const MODEL_4 = 4;
+    const MODEL_1 = "1";
+    const MODEL_2 = "2";
+    const MODEL_3 = "3";
+    const MODEL_4 = "4";
     public static array $model = [
         self::MODEL_1 => ["value" => self::MODEL_1, "label" => "通义千问 qwen-turbo", 'model' => "qwen-turbo", "driver" => "Qwen"],
         self::MODEL_2 => ["value" => self::MODEL_2, "label" => "通义千问 qwen-plus", 'model' => "qwen-plus", "driver" => "Qwen"],
@@ -18,17 +18,17 @@ class Message
         self::MODEL_4 => ["value" => self::MODEL_4, "label" => "通义千问 qwen-max-longcontext", 'model' => "qwen-max-longcontext", "driver" => "Qwen"],
     ];
 
-    const TALK_1 = 1;
-    const TALK_2 = 2;
+    const TALK_1 = "1";
+    const TALK_2 = "2";
     public static array $talk = [
         self::TALK_1 => ["label" => "单轮会话", "value" => self::TALK_1],
         self::TALK_2 => ["label" => "多轮会话", "value" => self::TALK_2],
     ];
 
-    const PACKAGE_1 = 1;
-    const PACKAGE_2 = 2;
-    const PACKAGE_3 = 3;
-    const PACKAGE_4 = 4;
+    const PACKAGE_1 = "1";
+    const PACKAGE_2 = "2";
+    const PACKAGE_3 = "3";
+    const PACKAGE_4 = "4";
     public static array $package = [
         self::PACKAGE_1 => ["label" => "无限制", "value" => self::PACKAGE_1],
         self::PACKAGE_2 => ["label" => "限量套餐", "value" => self::PACKAGE_2],

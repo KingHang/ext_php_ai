@@ -37,13 +37,13 @@ $http_worker->onMessage = function (TcpConnection $connection, Request $request)
         $action = '';
         $method = 'POST';
 
-        $model = Elm::select('model', '模型')->options(array_values(Message::$model))->value($config['model'] ?? "1");
+        $model = Elm::select('model', '模型')->options(array_values(Message::$model))->value($config['model'] ?? Message::MODEL_1);
         $key = Elm::input("key", "apiKey")->value($config['key'] ?? "");
         $proxy = Elm::input("proxy", "代理地址")->value($config['proxy'] ?? "");
         $user = Elm::input("user", "用户列表")->info("填写可以使用机器人的微信ID，多个用英文逗号分隔")->value($config['user'] ?? "");
         $delayedReply = Elm::input("delayedReply", "延迟回复")->info("填写数字固定时间延迟或1-3随机延迟，0不延迟，单位：秒")->value($config['delayedReply'] ?? "0");
-        $talk = Elm::radio("talk", "会话方式", 1)->options(array_values(Message::$talk));
-        $package = Elm::select("package", "套餐", 1)->options(array_values(Message::$package));
+        $talk = Elm::radio("talk", "会话方式", Message::TALK_1)->options(array_values(Message::$talk));
+        $package = Elm::select("package", "套餐", $config['package'] ?? Message::PACKAGE_1)->options(array_values(Message::$package));
         $tokens = Elm::input("tokens", "TOKENS")->value($config["tokens"] ?? 0)->min(1)->required();
         $expire = Elm::input("expire", "到期时间")->value($config["expire"] ?? date("Y-m-d"))->required();
         $package->control([

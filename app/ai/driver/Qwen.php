@@ -40,7 +40,6 @@ class Qwen extends Driver
                 "content" => $data
             ];
             $messages[] = $question;
-            $history[] = $question;
             $headers = [
                 "Authorization" => "Bearer {$this->apiKey}"
             ];
@@ -56,7 +55,8 @@ class Qwen extends Driver
             ], $headers);
 
             if (isset($resData['output']['text'])) {
-                $history[] = ["role" => "system", "content" => $resData['output']['text']];
+                $history[] = $question;
+                $history[] = ["role" => "assistant", "content" => $resData['output']['text']];
 
                 return [
                     "code" => 0,
