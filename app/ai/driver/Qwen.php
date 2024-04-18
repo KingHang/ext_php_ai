@@ -16,7 +16,7 @@ class Qwen extends Driver
         "qwen-max-longcontext" => "/api/v1/services/aigc/text-generation/generation",
     ];
 
-    public function message(string $data, array $history = [], bool $sse = false): array
+    public function message(string $data, array &$history = [], bool $sse = false): array
     {
         try {
             $modelApi = $this->modelList[$this->model] ?? null;
@@ -35,10 +35,12 @@ class Qwen extends Driver
                 ];
             }
 
-            $messages[] = [
+            $question = [
                 "role" => "user",
                 "content" => $data
             ];
+            $messages[] = $question;
+            $history[] = $question;
             $headers = [
                 "Authorization" => "Bearer {$this->apiKey}"
             ];
@@ -54,10 +56,13 @@ class Qwen extends Driver
             ], $headers);
 
             if (isset($resData['output']['text'])) {
+                $history[] = ["role" => "system", "content" => $resData['output']['text']];
+
                 return [
                     "code" => 0,
                     "data" => $resData,
-                    "answer" => $resData['output']['text']
+                    "answer" => $resData['output']['text'],
+                    "used" => $resData['usage']['total_tokens']
                 ];
             } else {
                 return [

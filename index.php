@@ -40,16 +40,34 @@ $http_worker->onMessage = function (TcpConnection $connection, Request $request)
         $model = Elm::select('model', '模型')->options(array_values(Message::$model))->value($config['model'] ?? "1");
         $key = Elm::input("key", "apiKey")->value($config['key'] ?? "");
         $proxy = Elm::input("proxy", "代理地址")->value($config['proxy'] ?? "");
-        $tokens = Elm::input("tokens", "TOKENS")->value($config["tokens"] ?? 0)->min(0)->info("可用TOKEN数量，0不限制");
         $user = Elm::input("user", "用户列表")->info("填写可以使用机器人的微信ID，多个用英文逗号分隔")->value($config['user'] ?? "");
         $delayedReply = Elm::input("delayedReply", "延迟回复")->info("填写数字固定时间延迟或1-3随机延迟，0不延迟，单位：秒")->value($config['delayedReply'] ?? "0");
+        $talk = Elm::radio("talk", "会话方式", 1)->options(array_values(Message::$talk));
+        $package = Elm::select("package", "套餐", 1)->options(array_values(Message::$package));
+        $tokens = Elm::input("tokens", "TOKENS")->value($config["tokens"] ?? 0)->min(1)->required();
+        $expire = Elm::input("expire", "到期时间")->value($config["expire"] ?? date("Y-m-d"))->required();
+        $package->control([
+            [
+                "value" => Message::PACKAGE_2,
+                "rule" => [$tokens]
+            ],
+            [
+                "value" => Message::PACKAGE_3,
+                "rule" => [$expire]
+            ],
+            [
+                "value" => Message::PACKAGE_4,
+                "rule" => [$tokens, $expire]
+            ]
+        ]);
+
 
         //创建表单
         $form = Elm::createForm($action)->setMethod($method);
         $form->setTitle("AI助手设置");
 
         //添加组件
-        $form->setRule([$model, $key, $proxy, $tokens, $user, $delayedReply]);
+        $form->setRule([$model, $key, $proxy, $user, $talk, $delayedReply, $package]);
 
         //生成表单页面
         return $connection->send($form->view());
