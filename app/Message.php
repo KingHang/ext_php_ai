@@ -85,15 +85,19 @@ class Message
             // 不适用群消息
             // 转发到ai获取结果
 
-            $resData = $this->createAnswer($msg['data']['msg'] ?? "", $fromId);
-            if ($resData == "") return false;
+            $type = $msg['data']['type'] ?? 0;
+            // 文字消息
+            if ($type == 1) {
+                $resData = $this->createAnswer($msg['data']['msg'] ?? "", $fromId);
+                if ($resData == "") return false;
 
-            $this->delayedReply($conf);
+                $this->delayedReply($conf);
 
-            sleep(rand(1, 3));
-
-            $resMsg = $this->buildMsg($resData, $fromId, $pid);
-            $this->sendMsg($resMsg, $conn);
+                $resMsg = $this->buildMsg($resData, $fromId, $pid);
+                $this->sendMsg($resMsg, $conn);
+            } elseif ($type == 3) {
+                // 图片消息
+            }
         }
     }
 
